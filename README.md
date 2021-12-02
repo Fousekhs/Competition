@@ -1,1 +1,2 @@
-# Competition
+This is the repository for an exercise for a university assignment for the course of Web Technologies
+Students are tasked to create a website for a competition. This website should collect some info from the user and update standings, announce winners etc.
