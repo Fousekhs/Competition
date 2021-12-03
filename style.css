@@ -1,0 +1,30 @@
+body {
+    padding: 0;
+    gap: 0;
+}
+
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.head {
+    text-align: center;
+}
+
+.head div {
+    font-size: 18;
+}
+
+table {
+    margin: 0 auto;
+}
+
+.buttons {
+    text-align: center;
+}
+
+.Error {
+    color: red;
+    text-align: center;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/gif" href="unipi.gif">
+    <title>Διαγωνισμός</title>
+</head>
+<body>
+    <div class="container">
+        <div class="head">
+            <h2>Διαγωνισμός Πληροφορικής</h2>
+            <hr width="10%">
+            <div id="papei">
+                Πανεπιστήμιο Πειραιώς
+            </div>
+        </div>
+        <br><br><br>
+        <table id="competitor-number">
+            <tr>
+                <td>
+                    <label for="Competitors">Αριθμός Διαγωνιζόμενων:</label>
+                </td>
+                <td>
+                    <input type="number" id="Competitors" name="Competitors" min="0" max="250" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="buttons" colspan="2">
+                    <input type="button" value="Επόμενο" id="next" onclick="Next()">
+                </td>
+            </tr>
+        </table>
+        <div class="Error" id="Error"></div>
+        <table>
+            <tr>
+                <td>
+                    <input type="hidden" class="choice-buttons" onclick="mean_value()">
+                </td>
+                <td>
+                    <input type="hidden" class="choice-buttons" onclick="over_eight()">
+                </td>
+                <td>
+                    <input type="hidden" class="choice-buttons" onclick="top_student()">
+                </td>
+            </tr>
+        </table> 
+        <table>
+            <tr>
+                <td>
+                    <label for="AM" id="AM-label"></label>
+                </td>
+                <td>
+                    <input type="hidden" id="AM">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+
+        let n;
+        let number;
+        let AMS;
+        let grades;
+        
+        function init() {
+            document.getElementById("AM-label").innerHTML = "Αριθμός Μητρτώου:";
+            document.getElementById("AM").type = "text";
+        }
+
+        function Next() {
+            number = document.getElementById("Competitors").value;
+
+            if (number > 0 && number < 251) {
+                document.getElementById("Competitors").disabled = true;
+                document.getElementById("Error").innerHTML = ""; 
+                document.getElementById("next").type = "hidden";
+                n = 0;
+                grades = Array(number);
+                AMS = Array(number);
+                init()
+                return;
+            } 
+            document.getElementById("Error").innerHTML = "Ο αριθμός των διαγωνιζόμενων πρέπει να είναι από 0 μέχρι 255"; 
+        }
+
+    
+    </script>
+</body>
+</html>
