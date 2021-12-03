@@ -15,8 +15,10 @@
                 Πανεπιστήμιο Πειραιώς
             </div>
         </div>
-        <br><br><br>
-        <table id="competitor-number">
+        <div id="brakes-1">
+            <br><br><br>
+        </div>
+        <table id="competitor-number" class="input-back">
             <tr>
                 <td>
                     <label for="Competitors">Αριθμός Διαγωνιζόμενων:</label>
@@ -32,6 +34,7 @@
             </tr>
         </table>
         <div class="Error" id="Error"></div>
+        <div id="brakes-2"></div>
         <table>
             <tr>
                 <td>
@@ -45,16 +48,41 @@
                 </td>
             </tr>
         </table> 
-        <table>
-            <tr>
-                <td>
-                    <label for="AM" id="AM-label"></label>
-                </td>
-                <td>
-                    <input type="hidden" id="AM">
-                </td>
-            </tr>
-        </table>
+        <div id="form-container" class="">
+            <table>
+                <tr>
+                    <td colspan="2">
+                        <div class="form-header" id="header"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="AM" id="AM-label"></label>
+                    </td>
+                    <td>
+                        <input type="hidden" id="AM">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="grade" id="grade-label"></label>
+                    </td>
+                    <td>
+                        <input type="hidden" id="grade">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="hidden" id="submit2">
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <script>
@@ -65,8 +93,14 @@
         let grades;
         
         function init() {
+            document.getElementById("form-container").className += "form-container";
             document.getElementById("AM-label").innerHTML = "Αριθμός Μητρτώου:";
+            document.getElementById("header").innerHTML = "Εισάγετε τα στοιχεία για τους Διαγωνιζόμενους";
             document.getElementById("AM").type = "text";
+            document.getElementById("grade-label").innerHTML = "Βαθμός Χρήστη:";
+            document.getElementById("grade").type = "text";
+            document.getElementById("brakes-1").innerHTML = "<br>";
+            document.getElementById("brakes-2").innerHTML = "<br><br><br>"
         }
 
         function Next() {

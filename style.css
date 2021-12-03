@@ -4,8 +4,9 @@ body {
 }
 
 .container {
-    max-width: 1024px;
     margin: 0 auto;
+    padding: 0;
+    gap: 0;
 }
 
 .head {
@@ -18,6 +19,11 @@ body {
 
 table {
     margin: 0 auto;
+    gap: 10px;
+}
+
+td {
+    text-align: center;
 }
 
 .buttons {
@@ -27,4 +33,30 @@ table {
 .Error {
     color: red;
     text-align: center;
+}
+
+.input-back {
+    background-color: #1F2937;
+    color: #F9FAF8;
+    border-radius: 14px;
+    padding: 10px;
+}
+
+.form-container {
+    max-width: 630px;
+    margin: 0 auto;
+    background-color: #1F2937;
+    color: #F9FAF8;
+    padding: 7px;
+    border-radius: 14px;
+}
+
+.form-container hr {
+    width: 30%;
+    color: #F9FAF8;
+}
+
+.form-header {
+    font-size: 28px;
+    font-weight: bold;
 }
