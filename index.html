@@ -10,8 +10,8 @@
     <div class="container">
         <div class="head">
             <h2>Διαγωνισμός Πληροφορικής</h2>
-            <hr width="10%">
-            <div id="papei">
+            <hr>
+            <div>
                 Πανεπιστήμιο Πειραιώς
             </div>
         </div>
@@ -33,7 +33,6 @@
                 </td>
             </tr>
         </table>
-        <div class="Error" id="Error"></div>
         <div id="brakes-2"></div>
         <table>
             <tr>
@@ -48,7 +47,7 @@
                 </td>
             </tr>
         </table> 
-        <div id="form-container" class="">
+        <div id="form-container" class="form-container-start">
             <table>
                 <tr>
                     <td colspan="2">
@@ -78,41 +77,84 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="hidden" id="submit2">
+                        <input type="hidden" id="count-btn" onclick="count()">
                     </td>
                 </tr>
             </table>
         </div>
+        <div class="Error" id="Error"></div>
     </div>
 
     <script>
 
-        let n;
+        let n = 0;
         let number;
-        let AMS;
-        let grades;
+        let students_over_eight = 0;
+        let S = 0;
+        let best_students;
+        let top_grade;
+
+        function end_game() {
+
+        }
+
+        function evaluate_AM(text) {
+            if (text.length != 6) {
+                return true;
+            }
+            if (text[0] != 'p') {
+                return true;
+            }
+            let number_part = text.slice(1);
+            if (number_part != parseInt(number_part)) {
+                return true;
+            }
+            let year = text.slice(1, 3);
+            if (year != 21) {
+                return true;
+            }
+            let code = text.slice(3);
+            if (code < 0 || code > 999) {
+                return true;
+            }
+            return false;
+        }
+
+        function count() {
+            if (n==number) {
+                return;
+            }
+            let am = document.getElementById("AM").value
+            let grade = document.getElementById("grade").value
+            if (evaluate_AM(am)) {
+                document.getElementById("Error").innerHTML = 'Ο Αριθμός μητρώου μαθητή πρέπει να είναι της μορφής: "p21xxx", x: ακέραιος από 0 μέχρι 9'; 
+                return;
+            }
+            document.getElementById("count-btn").value = ++n + "/" + number;
+
+        }
         
         function init() {
-            document.getElementById("form-container").className += "form-container";
+            best_students = Array(number);
+            document.getElementById("Competitors").disabled = true;
+            document.getElementById("Error").innerHTML = ""; 
+            document.getElementById("next").type = "hidden";
+            document.getElementById("form-container").className = "form-container";
             document.getElementById("AM-label").innerHTML = "Αριθμός Μητρτώου:";
-            document.getElementById("header").innerHTML = "Εισάγετε τα στοιχεία για τους Διαγωνιζόμενους";
+            document.getElementById("header").innerHTML = "Εισάγετε τα στοιχεία για των μαθητών";
             document.getElementById("AM").type = "text";
-            document.getElementById("grade-label").innerHTML = "Βαθμός Χρήστη:";
+            document.getElementById("grade-label").innerHTML = "Βαθμός Μαθητή:";
             document.getElementById("grade").type = "text";
             document.getElementById("brakes-1").innerHTML = "<br>";
-            document.getElementById("brakes-2").innerHTML = "<br><br><br>"
+            document.getElementById("brakes-2").innerHTML = "<br><br>"
+            document.getElementById("count-btn").type = "button";
+            document.getElementById("count-btn").value = ++n + " / " + number; 
         }
 
         function Next() {
             number = document.getElementById("Competitors").value;
 
             if (number > 0 && number < 251) {
-                document.getElementById("Competitors").disabled = true;
-                document.getElementById("Error").innerHTML = ""; 
-                document.getElementById("next").type = "hidden";
-                n = 0;
-                grades = Array(number);
-                AMS = Array(number);
                 init()
                 return;
             } 

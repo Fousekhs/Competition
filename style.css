@@ -1,6 +1,7 @@
 body {
     padding: 0;
     gap: 0;
+    background-color: #F9FAF8;
 }
 
 .container {
@@ -11,6 +12,12 @@ body {
 
 .head {
     text-align: center;
+    color: #1F2937;
+}
+
+.head hr {
+    width: 10%;
+    color: #1F2937;
 }
 
 .head div {
@@ -42,12 +49,17 @@ td {
     padding: 10px;
 }
 
+.form-container-start {
+    max-height: 0px;
+    max-width: 0px;
+}
+
 .form-container {
     max-width: 630px;
     margin: 0 auto;
     background-color: #1F2937;
     color: #F9FAF8;
-    padding: 7px;
+    padding: 10px;
     border-radius: 14px;
 }
 
