@@ -68,25 +68,12 @@
                     </td>
                 </tr>
             </table>
+            <div class="Error" id="Error"></div>
         </div>
-        <div class="Error" id="Error"></div>
         <div id="post_count" class="">
             <div id="post_count_header"></div>
-            <table>
-                <tr>
-                    <td>
-                        <input type="hidden" id="mean_value" value="Μέσος όρος μαθητών" onclick="mean_value()">
-                    </td>
-                    <td>
-                        <input type="hidden" id="top_student" value="Μαθητές με την υψηλότερη βαθμολογία" onclick="top_student()">
-                    </td>
-                    <td>
-                        <input type="hidden" id="over_eight" value="Μαθητές με βαθμό > 8" onclick="over_eight()">
-                    </td>
-                </tr>
-            </table> 
+            <a href="/results/results.html"><input type="hidden" id="results" value="Προβολή αποτελεσμάτων"></a>
         </div>
-        <div id="brakes-3"></div>
     </div>
 
     <script>
@@ -99,10 +86,18 @@
         let best_students_num = 0;
         let top_grade;
 
+        function results() {
+        }
+
+        function best_students_string() {
+            let str = "";
+            for (let i = 0; i < best_students_num; i++) {
+                str += best_students[i] + "<br>";
+            }
+        }
+
         function post_count() {
-            document.getElementById("mean_value").type = "button";
-            document.getElementById("over_eight").type = "button";
-            document.getElementById("top_student").type = "button";
+            document.getElementById("results").type = "button";
             document.getElementById("form-container").className = "form-container-unused";
             document.getElementById("AM-label").innerHTML = "";
             document.getElementById("header").innerHTML = "";
@@ -112,8 +107,16 @@
             document.getElementById("count-btn").type = "hidden";
             document.getElementById("post_count_header").innerHTML = "Η εισαγωγή των στοιχείων ήταν επιτυχής!";
             document.getElementById("post_count").className = "post_count";
-            document.getElementById("brakes-3").innerHTML = "<br><br>";
+            
+            let mean_value = S / number;
+            let s = best_students_string();
+
+            sessionStorage.setItem("over_eight", students_over_eight);
+            sessionStorage.setItem("mean_value", mean_value);
+            sessionStorage.setItem("best_students", best_students);
+            sessionStorage.setItem("top_grade", top_grade);
         }
+
 
         function evaluate_AM(text) {
             if (text.length != 6) {

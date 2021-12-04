@@ -20,6 +20,8 @@ body {
 .head {
     text-align: center;
     color: #1F2937;
+    font-weight: bold;
+    font-size: xx-large;
 }
 
 .head hr {
@@ -62,7 +64,6 @@ td {
 }
 
 .form-container {
-    max-width: 630px;
     margin: 0 auto;
     background-color: #1F2937;
     color: #F9FAF8;
@@ -82,7 +83,6 @@ td {
 
 .post_count {
     margin: 0 auto;
-    max-width: 80%;
     background-color: #1F2937;
     color: #F9FAF8;
     text-align: center;
@@ -104,4 +104,29 @@ td {
     color: #1F2937;
     font-size: 21px;
     padding: 3px;
+}  
+
+.number {
+    font-weight: bold;
+    font-size: 80px;
+    color: #1F2937;
+}
+
+.results-subtext {
+    color: gray;
+}
+
+.results-table td {
+    width: 30%; 
+    padding: 10px;
+}
+
+.max_grade {
+    color: #1F2937;
+    font-weight: bold;
+}
+
+.top_students {
+    color: #1F2937;
+    font-size: x-large;
 }
