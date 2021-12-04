@@ -34,20 +34,7 @@
             </tr>
         </table>
         <div id="brakes-2"></div>
-        <table>
-            <tr>
-                <td>
-                    <input type="hidden" class="choice-buttons" onclick="mean_value()">
-                </td>
-                <td>
-                    <input type="hidden" class="choice-buttons" onclick="over_eight()">
-                </td>
-                <td>
-                    <input type="hidden" class="choice-buttons" onclick="top_student()">
-                </td>
-            </tr>
-        </table> 
-        <div id="form-container" class="form-container-start">
+        <div id="form-container" class="form-container-unused">
             <table>
                 <tr>
                     <td colspan="2">
@@ -83,6 +70,23 @@
             </table>
         </div>
         <div class="Error" id="Error"></div>
+        <div id="post_count" class="">
+            <div id="post_count_header"></div>
+            <table>
+                <tr>
+                    <td>
+                        <input type="hidden" id="mean_value" value="Μέσος όρος μαθητών" onclick="mean_value()">
+                    </td>
+                    <td>
+                        <input type="hidden" id="top_student" value="Μαθητές με την υψηλότερη βαθμολογία" onclick="top_student()">
+                    </td>
+                    <td>
+                        <input type="hidden" id="over_eight" value="Μαθητές με βαθμό > 8" onclick="over_eight()">
+                    </td>
+                </tr>
+            </table> 
+        </div>
+        <div id="brakes-3"></div>
     </div>
 
     <script>
@@ -92,10 +96,23 @@
         let students_over_eight = 0;
         let S = 0;
         let best_students;
+        let best_students_num = 0;
         let top_grade;
 
-        function end_game() {
-
+        function post_count() {
+            document.getElementById("mean_value").type = "button";
+            document.getElementById("over_eight").type = "button";
+            document.getElementById("top_student").type = "button";
+            document.getElementById("form-container").className = "form-container-unused";
+            document.getElementById("AM-label").innerHTML = "";
+            document.getElementById("header").innerHTML = "";
+            document.getElementById("AM").type = "hidden";
+            document.getElementById("grade-label").innerHTML = "";
+            document.getElementById("grade").type = "hidden";
+            document.getElementById("count-btn").type = "hidden";
+            document.getElementById("post_count_header").innerHTML = "Η εισαγωγή των στοιχείων ήταν επιτυχής!";
+            document.getElementById("post_count").className = "post_count";
+            document.getElementById("brakes-3").innerHTML = "<br><br>";
         }
 
         function evaluate_AM(text) {
@@ -120,18 +137,46 @@
             return false;
         }
 
+        function update_count_html() {
+            document.getElementById("Error").innerHTML = "";
+            document.getElementById("count-btn").value = (n + 1) + "/" + number;
+            document.getElementById("AM").value = "";
+            document.getElementById("grade").value = "";
+        }
+
         function count() {
-            if (n==number) {
-                return;
-            }
-            let am = document.getElementById("AM").value
-            let grade = document.getElementById("grade").value
+            n++;
+            let am = document.getElementById("AM").value;
+            let grade = parseInt(document.getElementById("grade").value);
             if (evaluate_AM(am)) {
+                n--;
                 document.getElementById("Error").innerHTML = 'Ο Αριθμός μητρώου μαθητή πρέπει να είναι της μορφής: "p21xxx", x: ακέραιος από 0 μέχρι 9'; 
                 return;
             }
-            document.getElementById("count-btn").value = ++n + "/" + number;
-
+            if (grade.length == 0) {
+                n--;
+                document.getElementById("Error").innerHTML = 'Εισάγετε βαθμό μαθητή!'; 
+                return;
+            }
+            S += grade;
+            if (grade > 8) {
+                students_over_eight++;
+            }
+            if (n==1) {
+                best_students[best_students_num++] = am;
+                top_grade = grade;
+            } else if (grade > top_grade) {
+                best_students_num = 0;  
+                best_students[best_students_num++] = am;
+                top_grade = grade;              
+            } else if (grade == top_grade) {
+                best_students[best_students_num++] = am;
+            }
+            update_count_html();
+            if (number <= n) {
+                post_count();
+                return;
+            }
         }
         
         function init() {
@@ -145,10 +190,9 @@
             document.getElementById("AM").type = "text";
             document.getElementById("grade-label").innerHTML = "Βαθμός Μαθητή:";
             document.getElementById("grade").type = "text";
-            document.getElementById("brakes-1").innerHTML = "<br>";
             document.getElementById("brakes-2").innerHTML = "<br><br>"
             document.getElementById("count-btn").type = "button";
-            document.getElementById("count-btn").value = ++n + " / " + number; 
+            document.getElementById("count-btn").value = (n + 1) + " / " + number; 
         }
 
         function Next() {
