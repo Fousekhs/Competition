@@ -11,14 +11,14 @@
         <div class="head">
             <h2>Διαγωνισμός Πληροφορικής</h2>
             <hr>
-            <div>
+            <div class="subtext">
                 Πανεπιστήμιο Πειραιώς
             </div>
         </div>
         <div id="brakes-1">
             <br><br><br>
         </div>
-        <table id="competitor-number" class="input-back">
+        <table id="competitor-number" class="input-back rounded-corners">
             <tr>
                 <td>
                     <label for="Competitors">Αριθμός Διαγωνιζόμενων:</label>
@@ -78,20 +78,20 @@
 
     <script>
 
-        let n = 0;
-        let number;
-        let students_over_eight = 0;
-        let S = 0;
-        let best_students;
-        let best_students_num = 0;
-        let top_grade;
+        var n = 0;
+        var number;
+        var students_over_eight = 0;
+        var S = 0;
+        var best_students;
+        var best_students_num = 0;
+        var top_grade;
 
         function results() {
         }
 
         function best_students_string() {
-            let str = "";
-            for (let i = 0; i < best_students_num; i++) {
+            var str = "";
+            for (var i = 0; i < best_students_num; i++) {
                 str += best_students[i] + "<br>";
             }
         }
@@ -106,10 +106,10 @@
             document.getElementById("grade").type = "hidden";
             document.getElementById("count-btn").type = "hidden";
             document.getElementById("post_count_header").innerHTML = "Η εισαγωγή των στοιχείων ήταν επιτυχής!";
-            document.getElementById("post_count").className = "post_count";
+            document.getElementById("post_count").className = "post_count rounded-corners";
             
-            let mean_value = S / number;
-            let s = best_students_string();
+            var mean_value = S / number;
+            var s = best_students_string();
 
             sessionStorage.setItem("over_eight", students_over_eight);
             sessionStorage.setItem("mean_value", mean_value);
@@ -125,15 +125,15 @@
             if (text[0] != 'p') {
                 return true;
             }
-            let number_part = text.slice(1);
+            var number_part = text.slice(1);
             if (number_part != parseInt(number_part)) {
                 return true;
             }
-            let year = text.slice(1, 3);
+            var year = text.slice(1, 3);
             if (year != 21) {
                 return true;
             }
-            let code = text.slice(3);
+            var code = text.slice(3);
             if (code < 0 || code > 999) {
                 return true;
             }
@@ -149,8 +149,8 @@
 
         function count() {
             n++;
-            let am = document.getElementById("AM").value;
-            let grade = parseInt(document.getElementById("grade").value);
+            var am = document.getElementById("AM").value;
+            var grade = parseInt(document.getElementById("grade").value);
             if (evaluate_AM(am)) {
                 n--;
                 document.getElementById("Error").innerHTML = 'Ο Αριθμός μητρώου μαθητή πρέπει να είναι της μορφής: "p21xxx", x: ακέραιος από 0 μέχρι 9'; 
@@ -187,7 +187,7 @@
             document.getElementById("Competitors").disabled = true;
             document.getElementById("Error").innerHTML = ""; 
             document.getElementById("next").type = "hidden";
-            document.getElementById("form-container").className = "form-container";
+            document.getElementById("form-container").className = "form-container rounded-corners";
             document.getElementById("AM-label").innerHTML = "Αριθμός Μητρτώου:";
             document.getElementById("header").innerHTML = "Εισάγετε τα στοιχεία για των μαθητών";
             document.getElementById("AM").type = "text";

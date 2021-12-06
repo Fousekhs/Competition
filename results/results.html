@@ -40,10 +40,10 @@
         </table>
     </div>
     <script>
-        let n = sessionStorage.getItem("number_best_students");
+        var n = sessionStorage.getItem("number_best_students");
         document.getElementById("number_AM").innerHTML = n > 1 ? "Οι αριθμοί" : "Ο αριθμός";
         document.getElementById("number_of_studens").innerHTML = n > 1 ? "των φοιτητών" : "του φοιτητή";
-        let n_o_e = sessionStorage.getItem("over_eight");
+        var n_o_e = sessionStorage.getItem("over_eight");
         document.getElementById("over_eight").innerHTML = n_o_e;
         document.getElementById("num_over_eight").innerHTML = n_o_e > 1 ? "Φοιτητές είχαν" : "Φοιτητής είχε";
         document.getElementById("mean_value").innerHTML = sessionStorage.getItem("mean_value");

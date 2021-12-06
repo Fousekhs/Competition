@@ -11,6 +11,11 @@ body {
     border-bottom: 10px solid #1F2937;
 }
 
+body > * {
+    text-align: center;
+    color: #1F2937
+}
+
 .container {
     margin: 0 auto;
     padding: 0;
@@ -18,19 +23,16 @@ body {
 }
 
 .head {
-    text-align: center;
-    color: #1F2937;
     font-weight: bold;
-    font-size: xx-large;
+    font-size: x-large;
 }
 
 .head hr {
     width: 10%;
-    color: #1F2937;
 }
 
 .head div {
-    font-size: 18;
+    font-size: 14;
 }
 
 table {
@@ -38,23 +40,17 @@ table {
     gap: 10px;
 }
 
-td {
-    text-align: center;
-}
-
-.buttons {
-    text-align: center;
+.rounded-corners {
+    border-radius: 20px;
 }
 
 .Error {
     color: red;
-    text-align: center;
 }
 
 .input-back {
     background-color: #1F2937;
     color: #F9FAF8;
-    border-radius: 14px;
     padding: 10px;
 }
 
@@ -68,7 +64,6 @@ td {
     background-color: #1F2937;
     color: #F9FAF8;
     padding: 10px;
-    border-radius: 14px;
 }
 
 .form-container hr {
@@ -85,34 +80,29 @@ td {
     margin: 0 auto;
     background-color: #1F2937;
     color: #F9FAF8;
-    text-align: center;
     font-size: 32px;
     font-weight: bold;
-    border-radius: 9px;
     padding: 6px;
 }
 
 .post_count td {
     padding: 20px;
     width: 30%;
-    text-align: center;
 }
 
 .post_count input {
     border-radius: 9px;
     background-color: #F9FAF8;
-    color: #1F2937;
     font-size: 21px;
     padding: 3px;
-}  
+}
 
 .number {
     font-weight: bold;
     font-size: 80px;
-    color: #1F2937;
 }
 
-.results-subtext {
+.subtext {
     color: gray;
 }
 
@@ -122,11 +112,9 @@ td {
 }
 
 .max_grade {
-    color: #1F2937;
     font-weight: bold;
 }
 
 .top_students {
-    color: #1F2937;
     font-size: x-large;
 }
