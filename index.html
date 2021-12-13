@@ -82,8 +82,7 @@
         let number;
         let students_over_eight = 0;
         let S = 0;
-        let best_students;
-        let best_students_num = 0;
+        let s = "";
         let top_grade;
 
         // takes care of the website's apperance after the data collection is completed
@@ -106,7 +105,7 @@
 
             sessionStorage.setItem("over_eight", students_over_eight);
             sessionStorage.setItem("mean_value", mean_value);
-            sessionStorage.setItem("best_students", best_students);
+            sessionStorage.setItem("best_students", s);
             sessionStorage.setItem("top_grade", top_grade);
         }
 
@@ -144,14 +143,14 @@
             S += student_grade;
             if (student_grade > 8) { students_over_eight++; }
             if (n==1) {
-                best_students[best_students_num++] = student_am;
+                s = student_am;
                 top_grade = student_grade;
             } else if (student_grade > top_grade) {
-                best_students_num = 0;  
-                best_students[best_students_num++] = student_am;
+                s = student_am;
                 top_grade = grade;              
             } else if (student_grade == top_grade) {
-                best_students[best_students_num++] = student_am;
+                s += "<br>";
+                s += student_am;
             }
         }
 
@@ -190,7 +189,6 @@
         
         // changes the website's apperance for the data collection
         function second_form() {
-            best_students = Array(number);
             document.getElementById("Competitors").disabled = true;
             document.getElementById("Error").innerHTML = ""; 
             document.getElementById("next").type = "hidden";
